@@ -1,0 +1,29 @@
+shader topDisp (output float resultF = 0)
+{
+
+// edge grip
+    float cutout;
+    point centre = point (0,0,0);
+    point here = point (u-0.5,4*v,0);
+    float dist = distance(centre,here);
+    float cutoutRadius = 0.14;
+    float face = smoothstep(cutoutRadius,cutoutRadius,dist) - 1;
+    cutout = face * 0.8;
+
+// circles
+    float s = 2*u;
+    float t = mod(2*v,1.4); //foreground circle
+    float discs;
+    point centre2 = point (0.9,0.5,0);
+    point here2 = point (s+0.05,(3.7*t)-0.6,0); //positioning
+    float dist2 = distance(centre2,here2);
+    float radius = u * 0.8;
+    float inDisk = smoothstep(radius,radius,dist2) - 1;
+
+    discs = inDisk * 0.03;
+
+    if(v < 0.1) 
+        resultF = cutout;
+    else
+        resultF = discs;
+}

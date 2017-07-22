@@ -1,0 +1,70 @@
+OpenShadingLanguage 1.00
+# Compiled by oslc 1.7.4.pixar38bde12
+# options: 
+shader bottomDisp
+oparam	float	resultF	0		%read{2147483647,-1} %write{16,16}
+global	float	u	%read{0,13} %write{2147483647,-1}
+global	float	v	%read{1,1} %write{2147483647,-1}
+local	float	s	%read{8,8} %write{0,0}
+local	float	t	%read{9,9} %write{6,6}
+local	point	centre2	%read{12,12} %write{7,7}
+local	point	here2	%read{12,12} %write{11,11}
+local	float	dist2	%read{14,14} %write{12,12}
+local	float	radius	%read{14,14} %write{13,13}
+local	float	inDisk	%read{16,16} %write{15,15}
+const	float	$const2	2		%read{0,1} %write{2147483647,-1}
+temp	float	$tmp1	%read{3,6} %write{1,1}
+const	float	$const3	1.4		%read{3,5} %write{2147483647,-1}
+const	string	$const4	"mod"		%read{2,2} %write{2147483647,-1}
+temp	float	$tmp2	%read{5,5} %write{4,4}
+temp	float	$tmp3	%read{4,4} %write{3,3}
+temp	float	$tmp4	%read{6,6} %write{5,5}
+const	point	$const5	0.89999998 0.5 0		%read{7,7} %write{2147483647,-1}
+const	float	$const6	0.050000001		%read{8,8} %write{2147483647,-1}
+temp	float	$tmp5	%read{11,11} %write{8,8}
+const	float	$const7	3.7		%read{9,9} %write{2147483647,-1}
+temp	float	$tmp6	%read{10,10} %write{9,9}
+const	float	$const8	0.60000002		%read{10,10} %write{2147483647,-1}
+temp	float	$tmp7	%read{11,11} %write{10,10}
+const	float	$const10	0		%read{11,11} %write{2147483647,-1}
+const	float	$const11	0.80000001		%read{13,13} %write{2147483647,-1}
+temp	float	$tmp8	%read{15,15} %write{14,14}
+const	float	$const13	1		%read{15,15} %write{2147483647,-1}
+const	float	$const14	0.029999999		%read{16,16} %write{2147483647,-1}
+code ___main___
+# bottomDisp.osl:3
+#     float s = 2*u;
+	mul		s $const2 u 	%filename{"bottomDisp.osl"} %line{3} %argrw{"wrr"}
+# bottomDisp.osl:4
+#     float t = mod(2*v,1.4); //foreground circle
+	mul		$tmp1 $const2 v 	%line{4} %argrw{"wrr"}
+	functioncall	$const4 7 	%argrw{"r"}
+# /Applications/Pixar/RenderManProServer-21.2/lib/osl/include/stdosl.h:135
+# point  mod (point  a, float  b) { return a - b*floor(a/b); }
+	div		$tmp3 $tmp1 $const3 	%filename{"/Applications/Pixar/RenderManProServer-21.2/lib/osl/include/stdosl.h"} %line{135} %argrw{"wrr"}
+	floor		$tmp2 $tmp3 	%argrw{"wr"}
+	mul		$tmp4 $const3 $tmp2 	%argrw{"wrr"}
+	sub		t $tmp1 $tmp4 	%argrw{"wrr"}
+# bottomDisp.osl:6
+#     point centre2 = point (0.9,0.5,0);
+	assign		centre2 $const5 	%filename{"bottomDisp.osl"} %line{6} %argrw{"wr"}
+# bottomDisp.osl:7
+#     point here2 = point (s+0.05,(3.7*t)-0.6,0); //positioning
+	add		$tmp5 s $const6 	%line{7} %argrw{"wrr"}
+	mul		$tmp6 $const7 t 	%argrw{"wrr"}
+	sub		$tmp7 $tmp6 $const8 	%argrw{"wrr"}
+	point		here2 $tmp5 $tmp7 $const10 	%argrw{"wrrr"}
+# bottomDisp.osl:8
+#     float dist2 = distance(centre2,here2);
+	distance	dist2 centre2 here2 	%line{8} %argrw{"wrr"}
+# bottomDisp.osl:9
+#     float radius = u * 0.8;
+	mul		radius u $const11 	%line{9} %argrw{"wrr"}
+# bottomDisp.osl:10
+#     float inDisk = smoothstep(radius,radius,dist2) - 1;
+	smoothstep	$tmp8 radius radius dist2 	%line{10} %argrw{"wrrr"}
+	sub		inDisk $tmp8 $const13 	%argrw{"wrr"}
+# bottomDisp.osl:12
+#     resultF = inDisk * 0.03;
+	mul		resultF inDisk $const14 	%line{12} %argrw{"wrr"}
+	end

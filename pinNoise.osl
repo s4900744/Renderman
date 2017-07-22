@@ -1,0 +1,12 @@
+shader pinNoise (output color Cout=1)
+{
+    //Cout=(color)texture("pinNoise1.tx",v,1-u);
+
+    float alpha;
+    texture ("pinNoise1.tx", u, v/2, "firstchannel", 0, "alpha", alpha);
+
+    if(alpha>0.1)
+        Cout=color(0.6,0.6,0.5);
+    else
+        Cout=color(0,0,0);
+}

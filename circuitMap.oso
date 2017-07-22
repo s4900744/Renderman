@@ -1,0 +1,14 @@
+OpenShadingLanguage 1.00
+# Compiled by oslc 1.7.4.pixar38bde12
+# options: 
+shader circuitMap
+param	color	Cin	1 1 1		%read{2147483647,-1} %write{2147483647,-1}
+oparam	color	Cout	1 1 1		%read{2147483647,-1} %write{0,0}
+global	float	u	%read{0,0} %write{2147483647,-1} %derivs
+global	float	v	%read{0,0} %write{2147483647,-1} %derivs
+const	string	$const1	"PCB.tx"		%read{0,0} %write{2147483647,-1}
+code ___main___
+# circuitMap.osl:6
+#     Cout=(color)texture("PCB.tx",u,v);
+	texture		Cout $const1 u v 	%filename{"circuitMap.osl"} %line{6} %argrw{"wrrr"} %argderivs{2,3}
+	end

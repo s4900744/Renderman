@@ -1,0 +1,1787 @@
+##RenderMan RIB
+version 3.04
+Display "Chip_01.tiff" "it" "rgba" 
+Format 1280 720 1
+Projection "perspective" "uniform float fov" [20]
+PixelVariance 0.01
+Hider "raytrace" "int incremental" [1] "int maxsamples" [1024]
+Integrator "PxrPathTracer" "integrator" 
+DepthOfField 5.6 0.2 2.2
+Exposure 1 2.2
+ShadingRate 0.05
+WorldBegin 
+Translate 0 0.15 2.5
+Rotate -20 1 0 0
+Rotate -55 0 1 0
+AttributeBegin 
+Rotate -90 1 0 0
+Light "PxrDomeLight" "theLight" "string lightColorMap" ["rectLight.tx"]
+AttributeEnd 
+TransformBegin 
+AttributeBegin 
+Translate 0 -0.01 1
+Pattern "PxrBump" "tableScratch" "string filename" ["nanotexture2.tx"] "float scale" [0.02]
+Bxdf "PxrDisney" "bxdf" "color baseColor" [1.9 1.9 2] "float metallic" [1] "reference normal bumpNormal" ["tableScratch:resultN"]
+Patch "bilinear" "P" [-2 -0.2 -2 3 -0.2 -2 -2 -0.2 2 3 -0.2 2]
+AttributeEnd 
+TransformEnd 
+TransformBegin 
+AttributeBegin 
+Rotate -70 0 1 0
+Translate 1.5 -0.2 -1.5
+Pattern "circuitMap" "circuit" 
+Bxdf "PxrDisney" "bxdf" "reference color baseColor" ["circuit:Cout"]
+Patch "bilinear" "P" [-0.75 -0.005 1.5 -0.75 0.005 1.5 0.75 -0.005 1.5 0.75 0.005 1.5]
+Patch "bilinear" "P" [-0.75 -0.005 -1.5 -0.75 0.005 -1.5 0.75 -0.005 -1.5 0.75 0.005 -1.5]
+Patch "bilinear" "P" [-0.75 -0.005 -1.5 -0.75 0.005 -1.5 -0.75 -0.005 1.5 -0.75 0.005 1.5]
+Patch "bilinear" "P" [0.75 -0.005 -1.5 0.75 0.005 -1.5 0.75 -0.005 1.5 0.75 0.005 1.5]
+Patch "bilinear" "P" [0.75 -0.005 1.5 0.75 -0.005 -1.5 -0.75 -0.005 1.5 -0.75 -0.005 -1.5]
+Patch "bilinear" "P" [0.75 0.005 1.5 0.75 0.005 -1.5 -0.75 0.005 1.5 -0.75 0.005 -1.5]
+AttributeEnd 
+TransformEnd 
+TransformBegin 
+Scale 1.03 0.07 0.3
+Translate 0 0.5 0
+AttributeBegin 
+Attribute "displacementbound" "sphere" [0.5] "coordinatesystem" ["shader"]
+Pattern "topDisp" "topDispTx" 
+Displace "PxrDisplace" "topDisplacement" "reference float dispScalar" ["topDispTx:resultF"] "float dispAmount" [0.095]
+Pattern "map" "decal" 
+Bxdf "PxrDisney" "bxdf" "reference color baseColor" ["decal:Cout"] "float roughness" [0.5]
+Patch "bilinear" "P" [0.48 0.457 0.285 0.48 0.457 -0.48 -0.48 0.457 0.285 -0.48 0.457 -0.48]
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrDisney" "forTheChip" "color baseColor" [0 0 0] "float metallic" [1] "float roughness" [0.5]
+Patch "bilinear" "P" [-0.5 -0.4 -0.51 -0.485 0.4 -0.483 -0.5 -0.4 0.31 -0.485 0.4 0.28]
+Patch "bilinear" "P" [-0.495 -0.4 0.325 -0.481 0.41 0.298 0.5 -0.4 0.325 0.481 0.41 0.298]
+AttributeEnd 
+TransformEnd 
+TransformBegin 
+AttributeBegin 
+Bxdf "PxrDisney" "forTheEdges" "color baseColor" [0 0 0] "float metallic" [1] "float roughness" [0.5]
+Translate 0.003 0 -0.0033
+TransformBegin 
+Translate -0.4976 0.0621 -0.027
+Scale 2 2 1.15
+Cylinder 0.0025 -0.1 0.1 360 
+TransformEnd 
+TransformBegin 
+Translate -0.4976 0.0621 0.088
+Sphere 0.005 -0.1 0.1 360 
+TransformEnd 
+TransformBegin 
+Rotate 90 0 1 0
+Translate 0.40959 0 0.12
+Scale 1 1 4.35
+Translate -0.4976 0.0621 -0.028
+Scale 2 2 1.15
+Cylinder 0.0025 -0.099 0.099 360 
+TransformEnd 
+TransformBegin 
+Scale 1 0.25 1
+Translate -0.01095 0.075 0.0308
+Rotate 3.95 0 0 -1
+Rotate 88 1 0 0
+Translate -0.4976 0.0621 -0.027
+Scale 2 2 1.15
+Cylinder 0.0025 -0.1 0.1 360 
+TransformEnd 
+TransformBegin 
+Translate -0.4976 0.0621 -0.141
+Sphere 0.005 -0.1 0.1 360 
+TransformEnd 
+TransformBegin 
+Rotate 90 1 0 0
+Translate -0.5059 -0.1457 -0.032
+Rotate 15.4 0 -1 0
+Rotate 8.7 1 0 0
+Cylinder 0.005 -0.032 0.032 360 
+TransformEnd 
+AttributeEnd 
+TransformEnd 
+TransformBegin 
+Rotate 180 0 1 0
+Translate -0.001 0 0.0597
+TransformBegin 
+Scale 1.03 0.07 0.3
+Translate 0 0.5 0
+AttributeBegin 
+Bxdf "PxrDisney" "forTheChip" "color baseColor" [0 0 0] "float metallic" [1] "float roughness" [0.5]
+Patch "bilinear" "P" [-0.5 -0.4 0.005 -0.485 0.4 0.006 -0.5 -0.4 0.31 -0.485 0.4 0.28]
+Patch "bilinear" "P" [-0.5 -0.4 -0.51 -0.485 0.4 -0.483 -0.5 -0.4 -0.21 -0.485 0.4 -0.21]
+Patch "bilinear" "P" [-0.5 -0.4 0.005 -0.485 0.4 0.006 0 -0.4 0.005 0 0.4 0.006]
+TransformBegin 
+Translate 0 0 -0.218
+Patch "bilinear" "P" [-0.5 -0.4 0.009 -0.485 0.4 0.008 0 -0.4 0.009 0 0.4 0.008]
+TransformEnd 
+Patch "bilinear" "P" [-0.495 -0.4 0.325 -0.481 0.41 0.298 0.496 -0.4 0.328 0.481 0.41 0.298]
+AttributeEnd 
+TransformEnd 
+TransformBegin 
+AttributeBegin 
+Bxdf "PxrDisney" "forTheEdges" "color baseColor" [0 0 0] "float metallic" [1] "float roughness" [0.5]
+Translate 0.003 0 -0.0033
+TransformBegin 
+Translate -0.4976 0.0621 -0.027
+Scale 2 2 1.15
+Cylinder 0.0025 0.0277 0.1 360 
+Cylinder 0.0025 -0.0994 -0.0283 360 
+TransformEnd 
+TransformBegin 
+Translate -0.4976 0.0621 0.088
+Sphere 0.005 -0.1 0.1 360 
+TransformEnd 
+TransformBegin 
+Rotate 90 0 1 0
+Translate 0.40959 0 0.12
+Scale 1 1 4.35
+Translate -0.4976 0.0621 -0.028
+Scale 2 2 1.15
+Cylinder 0.0025 -0.099 0.099 360 
+TransformEnd 
+TransformBegin 
+Scale 1 0.25 1
+Translate -0.01095 0.075 0.0308
+Rotate 3.95 0 0 -1
+Rotate 88 1 0 0
+Translate -0.4976 0.0621 -0.027
+Scale 2 2 1.15
+Cylinder 0.0025 -0.1 0.1 360 
+TransformEnd 
+TransformBegin 
+Translate -0.4976 0.0621 -0.141
+Sphere 0.005 -0.1 0.1 360 
+TransformEnd 
+TransformBegin 
+Rotate 90 1 0 0
+Translate -0.5059 -0.1457 -0.032
+Rotate 15.4 0 -1 0
+Rotate 8.7 1 0 0
+Cylinder 0.005 -0.032 0.032 360 
+TransformEnd 
+AttributeEnd 
+TransformEnd 
+TransformEnd 
+TransformBegin 
+Rotate 180 1 0 0
+Translate 0 0 0.06
+TransformBegin 
+Scale 1.03 0.07 0.3
+Translate 0 0.5 0
+AttributeBegin 
+Bxdf "PxrDisney" "forTheChip" "color baseColor" [0 0 0] "float metallic" [1] "float roughness" [0.5]
+AttributeBegin 
+Attribute "displacementbound" "sphere" [0.5] "coordinatesystem" ["shader"]
+Pattern "bottomDisp" "bottomDispTx" 
+Displace "PxrDisplace" "bottomDisplacement" "reference float dispScalar" ["bottomDispTx:resultF"] "float dispAmount" [0.095]
+Patch "bilinear" "P" [0.48 0.457 0.285 0.48 0.457 -0.48 -0.48 0.457 0.285 -0.48 0.457 -0.48]
+AttributeEnd 
+Patch "bilinear" "P" [-0.5 -0.4 -0.51 -0.485 0.4 -0.483 -0.5 -0.4 0.31 -0.485 0.4 0.28]
+Patch "bilinear" "P" [-0.495 -0.4 0.325 -0.481 0.41 0.298 0.5 -0.4 0.325 0.481 0.41 0.298]
+AttributeEnd 
+TransformEnd 
+TransformBegin 
+AttributeBegin 
+Bxdf "PxrDisney" "forTheEdges" "color baseColor" [0 0 0] "float metallic" [1] "float roughness" [0.5]
+Translate 0.003 0 -0.0033
+TransformBegin 
+Translate -0.4976 0.0621 -0.027
+Scale 2 2 1.15
+Cylinder 0.0025 -0.1 0.1 360 
+TransformEnd 
+TransformBegin 
+Translate -0.4976 0.0621 0.088
+Sphere 0.005 -0.1 0.1 360 
+TransformEnd 
+TransformBegin 
+Rotate 90 0 1 0
+Translate 0.40959 0 0.12
+Scale 1 1 4.35
+Translate -0.4976 0.0621 -0.028
+Scale 2 2 1.15
+Cylinder 0.0025 -0.099 0.099 360 
+TransformEnd 
+TransformBegin 
+Scale 1 0.25 1
+Translate -0.01095 0.075 0.0308
+Rotate 3.95 0 0 -1
+Rotate 88 1 0 0
+Translate -0.4976 0.0621 -0.027
+Scale 2 2 1.15
+Cylinder 0.0025 -0.1 0.1 360 
+TransformEnd 
+TransformBegin 
+Translate -0.4976 0.0621 -0.141
+Sphere 0.005 -0.1 0.1 360 
+TransformEnd 
+TransformBegin 
+Rotate 90 1 0 0
+Translate -0.5059 -0.1457 -0.032
+Rotate 15.4 0 -1 0
+Rotate 8.7 1 0 0
+Cylinder 0.005 -0.032 0.032 360 
+TransformEnd 
+AttributeEnd 
+TransformEnd 
+TransformBegin 
+Rotate 180 0 1 0
+Translate -0.001 0 0.0597
+TransformBegin 
+Scale 1.03 0.07 0.3
+Translate 0 0.5 0
+AttributeBegin 
+Bxdf "PxrDisney" "forTheChip" "color baseColor" [0 0 0] "float metallic" [1] "float roughness" [0.5]
+Patch "bilinear" "P" [-0.5 -0.4 -0.51 -0.485 0.4 -0.483 -0.5 -0.4 0.31 -0.485 0.4 0.28]
+Patch "bilinear" "P" [-0.495 -0.4 0.325 -0.481 0.41 0.298 0.496 -0.4 0.328 0.481 0.41 0.298]
+AttributeEnd 
+TransformEnd 
+TransformBegin 
+AttributeBegin 
+Bxdf "PxrDisney" "forTheEdges" "color baseColor" [0 0 0] "float metallic" [1] "float roughness" [0.5]
+Translate 0.003 0 -0.0033
+TransformBegin 
+Translate -0.4976 0.0621 -0.027
+Scale 2 2 1.15
+Cylinder 0.0025 -0.1 0.1 360 
+TransformEnd 
+TransformBegin 
+Translate -0.4976 0.0621 0.088
+Sphere 0.005 -0.1 0.1 360 
+TransformEnd 
+TransformBegin 
+Rotate 90 0 1 0
+Translate 0.40959 0 0.12
+Scale 1 1 4.35
+Translate -0.4976 0.0621 -0.028
+Scale 2 2 1.15
+Cylinder 0.0025 -0.099 0.099 360 
+TransformEnd 
+TransformBegin 
+Scale 1 0.25 1
+Translate -0.01095 0.075 0.0308
+Rotate 3.95 0 0 -1
+Rotate 88 1 0 0
+Translate -0.4976 0.0621 -0.027
+Scale 2 2 1.15
+Cylinder 0.0025 -0.1 0.1 360 
+TransformEnd 
+TransformBegin 
+Translate -0.4976 0.0621 -0.141
+Sphere 0.005 -0.1 0.1 360 
+TransformEnd 
+TransformBegin 
+Rotate 90 1 0 0
+Translate -0.5059 -0.1457 -0.032
+Rotate 15.4 0 -1 0
+Rotate 8.7 1 0 0
+Cylinder 0.005 -0.032 0.032 360 
+TransformEnd 
+AttributeEnd 
+TransformEnd 
+TransformEnd 
+TransformEnd 
+TransformBegin 
+Scale 1.01 0.7 0.75
+Translate 0.005 0 0
+AttributeBegin 
+Bxdf "PxrDisney" "forTheEdges" "color baseColor" [0 0 0] "float metallic" [1] "float roughness" [0.5]
+TransformBegin 
+Scale 1 0.02 0.02
+Translate 0 0 6.6
+Patch "bilinear" "P" [-0.5 -0.5 0.5 -0.5 0.5 0.5 0.5 -0.5 0.5 0.5 0.5 0.5]
+Patch "bilinear" "P" [-0.5 -0.5 -0.5 -0.5 0.5 -0.5 0.5 -0.5 -0.5 0.5 0.5 -0.5]
+Patch "bilinear" "P" [-0.5 -0.5 -0.5 -0.5 0.5 -0.5 -0.5 -0.5 0.5 -0.5 0.5 0.5]
+Patch "bilinear" "P" [0.5 -0.5 -0.5 0.5 0.5 -0.5 0.5 -0.5 0.5 0.5 0.5 0.5]
+Patch "bilinear" "P" [0.5 -0.5 0.5 0.5 -0.5 -0.5 -0.5 -0.5 0.5 -0.5 -0.5 -0.5]
+Patch "bilinear" "P" [0.5 0.5 0.5 0.5 0.5 -0.5 -0.5 0.5 0.5 -0.5 0.5 -0.5]
+Translate 0 0 -17
+Patch "bilinear" "P" [-0.5 -0.5 0.5 -0.5 0.5 0.5 0.5 -0.5 0.5 0.5 0.5 0.5]
+Patch "bilinear" "P" [-0.5 -0.5 -0.5 -0.5 0.5 -0.5 0.5 -0.5 -0.5 0.5 0.5 -0.5]
+Patch "bilinear" "P" [-0.5 -0.5 -0.5 -0.5 0.5 -0.5 -0.5 -0.5 0.5 -0.5 0.5 0.5]
+Patch "bilinear" "P" [0.5 -0.5 -0.5 0.5 0.5 -0.5 0.5 -0.5 0.5 0.5 0.5 0.5]
+Patch "bilinear" "P" [0.5 -0.5 0.5 0.5 -0.5 -0.5 -0.5 -0.5 0.5 -0.5 -0.5 -0.5]
+Patch "bilinear" "P" [0.5 0.5 0.5 0.5 0.5 -0.5 -0.5 0.5 0.5 -0.5 0.5 -0.5]
+TransformEnd 
+TransformBegin 
+Scale 0.03 0.02 0.23
+Translate -16.85 0 0.065
+Patch "bilinear" "P" [-0.5 -0.5 0.5 -0.5 0.5 0.5 0.5 -0.5 0.5 0.5 0.5 0.5]
+Patch "bilinear" "P" [-0.5 -0.5 -0.5 -0.5 0.5 -0.5 0.5 -0.5 -0.5 0.5 0.5 -0.5]
+Patch "bilinear" "P" [-0.5 -0.5 -0.5 -0.5 0.5 -0.5 -0.5 -0.5 0.5 -0.5 0.5 0.5]
+Patch "bilinear" "P" [0.5 -0.5 -0.5 0.5 0.5 -0.5 0.5 -0.5 0.5 0.5 0.5 0.5]
+Patch "bilinear" "P" [0.5 -0.5 0.5 0.5 -0.5 -0.5 -0.5 -0.5 0.5 -0.5 -0.5 -0.5]
+Patch "bilinear" "P" [0.5 0.5 0.5 0.5 0.5 -0.5 -0.5 0.5 0.5 -0.5 0.5 -0.5]
+Scale 1 1 0.4
+Translate 0.2 0 -1.7
+Patch "bilinear" "P" [-0.5 -0.5 0.5 -0.5 0.5 0.5 0.5 -0.5 0.5 0.5 0.5 0.5]
+Patch "bilinear" "P" [-0.5 -0.5 -0.5 -0.5 0.5 -0.5 0.5 -0.5 -0.5 0.5 0.5 -0.5]
+Patch "bilinear" "P" [-0.5 -0.5 -0.5 -0.5 0.5 -0.5 -0.5 -0.5 0.5 -0.5 0.5 0.5]
+Patch "bilinear" "P" [0.5 -0.5 -0.5 0.5 0.5 -0.5 0.5 -0.5 0.5 0.5 0.5 0.5]
+Patch "bilinear" "P" [0.5 -0.5 0.5 0.5 -0.5 -0.5 -0.5 -0.5 0.5 -0.5 -0.5 -0.5]
+Patch "bilinear" "P" [0.5 0.5 0.5 0.5 0.5 -0.5 -0.5 0.5 0.5 -0.5 0.5 -0.5]
+Translate 32.73 0 1.15
+Scale 2.2 1 3.5
+Patch "bilinear" "P" [-0.5 -0.5 0.5 -0.5 0.5 0.5 0.5 -0.5 0.5 0.5 0.5 0.5]
+Patch "bilinear" "P" [-0.5 -0.5 -0.5 -0.5 0.5 -0.5 0.5 -0.5 -0.5 0.5 0.5 -0.5]
+Patch "bilinear" "P" [-0.5 -0.5 -0.5 -0.5 0.5 -0.5 -0.5 -0.5 0.5 -0.5 0.5 0.5]
+Patch "bilinear" "P" [0.5 -0.5 -0.5 0.5 0.5 -0.5 0.5 -0.5 0.5 0.5 0.5 0.5]
+Patch "bilinear" "P" [0.5 -0.5 0.5 0.5 -0.5 -0.5 -0.5 -0.5 0.5 -0.5 -0.5 -0.5]
+Patch "bilinear" "P" [0.5 0.5 0.5 0.5 0.5 -0.5 -0.5 0.5 0.5 -0.5 0.5 -0.5]
+TransformEnd 
+TransformBegin 
+Scale 1 2 1
+Translate 0.495 0 0.122
+Rotate 90 1 0 0
+Cylinder 0.02 -0.005 0.005 360 
+Translate 0 0 -0.095
+Disk 0.1 0.02 360 
+Translate 0 0 -0.01
+Disk 0.1 0.02 360 
+TransformEnd 
+TransformBegin 
+Scale 1 2 1
+Translate 0.495 0 -0.198
+Rotate 90 1 0 0
+Cylinder 0.02 -0.005 0.005 360 
+Translate 0 0 -0.095
+Disk 0.1 0.02 360 
+Translate 0 0 -0.01
+Disk 0.1 0.02 360 
+TransformEnd 
+TransformBegin 
+Scale 1 2 1
+Translate -0.5 0 0.122
+Rotate 90 1 0 0
+Cylinder 0.02 -0.005 0.005 360 
+Translate 0 0 -0.095
+Disk 0.1 0.02 360 
+Translate 0 0 -0.01
+Disk 0.1 0.02 360 
+TransformEnd 
+TransformBegin 
+Scale 1 2 1
+Translate -0.5 0 -0.198
+Rotate 90 1 0 0
+Cylinder 0.02 -0.005 0.005 360 
+Translate 0 0 -0.095
+Disk 0.1 0.02 360 
+Translate 0 0 -0.01
+Disk 0.1 0.02 360 
+TransformEnd 
+AttributeEnd 
+TransformEnd 
+TransformBegin 
+AttributeBegin 
+Bxdf "PxrDisney" "forTheDiscs" "color baseColor" [0 0 0] "float metallic" [1] "float roughness" [0]
+Translate -0.345 0.165 -0.03
+Rotate 90 1 0 0
+Disk 0.1 0.05 360 
+Translate 0.693 0 -0.1
+Disk 0.2 0.05 360 
+AttributeEnd 
+TransformEnd 
+TransformBegin 
+Translate 0 -0.13 0
+AttributeBegin 
+Bxdf "PxrDisney" "forTheDiscs" "color baseColor" [0 0 0] "float metallic" [1] "float roughness" [0]
+Translate -0.345 0.165 -0.03
+Rotate 90 1 0 0
+Disk 0.1 0.05 360 
+Translate 0.693 0 -0.1
+Disk 0.2 0.05 360 
+AttributeEnd 
+TransformEnd 
+TransformBegin 
+Translate -0.16 0.005 -0.026
+Scale 0.7 0.7 0.9
+TransformBegin 
+Scale 0.8 1 0.8
+Translate -0.55 -0.04 -0.166
+AttributeBegin 
+Pattern "PxrBump" "pinNoise1" "int invertT" [0] "string filename" ["pinNoise1.tx"] "float scale" [0.0811724]
+Bxdf "PxrDisney" "forThePins" "color baseColor" [0.6 0.6 0.5] "float metallic" [1] "float roughness" [0.2] "reference normal bumpNormal" ["pinNoise1:resultN"]
+TransformBegin 
+Rotate 90 0 1 0
+Rotate 10 0 0 1
+Scale 0.5 0.5 0.5
+Translate 0.023 0.02 0
+Cylinder 0.07 -0.1 0.1 90 
+Cylinder 0.038 -0.1 0.1 90 
+Translate -0.03 0 0
+Patch "bilinear" "P" [0.1 0 -0.1 0.1 -0.18 -0.09 0.1 0 0.1 0.1 -0.18 0.09]
+Patch "bilinear" "P" [0.1 0 -0.1 0.07 0 -0.1 0.1 -0.18 -0.09 0.07 -0.18 -0.09]
+Patch "bilinear" "P" [0.1 0 0.1 0.07 0 0.1 0.1 -0.18 0.09 0.07 -0.18 0.09]
+Patch "bilinear" "P" [0.07 0 -0.1 0.07 -0.18 -0.09 0.07 0 0.1 0.07 -0.18 0.09]
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Cylinder 0.09 -0.015 0.015 360 
+TransformEnd 
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Disk 0.01 0.09 360 
+Translate 0 0 -0.025
+Disk 0.01 0.09 360 
+TransformEnd 
+Scale 0.8 2 0.3
+Translate 0.02 -0.06 0
+Rotate -20 0 0 1
+Patch "bilinear" "P" [0.1 0 -0.1 0.1 -0.18 -0.09 0.1 0 0.1 0.1 -0.18 0.09]
+Patch "bilinear" "P" [0.1 0 -0.1 0.07 0 -0.1 0.1 -0.18 -0.09 0.07 -0.18 -0.09]
+Patch "bilinear" "P" [0.1 0 0.1 0.07 0 0.1 0.1 -0.18 0.09 0.07 -0.18 0.09]
+Patch "bilinear" "P" [0.07 0 -0.1 0.07 -0.18 -0.09 0.07 0 0.1 0.07 -0.18 0.09]
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Cylinder 0.09 -0.015 0.015 360 
+TransformEnd 
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Disk 0.01 0.09 360 
+Translate 0 0 -0.025
+Disk 0.01 0.09 360 
+TransformEnd 
+TransformEnd 
+AttributeEnd 
+TransformEnd 
+Translate 0.165 0 0
+TransformBegin 
+Scale 0.8 1 0.8
+Translate -0.55 -0.04 -0.166
+AttributeBegin 
+Pattern "PxrBump" "pinNoise1" "int invertT" [1] "string filename" ["pinNoise1.tx"] "float scale" [0.0573773]
+Bxdf "PxrDisney" "forThePins" "color baseColor" [0.6 0.6 0.5] "float metallic" [1] "float roughness" [0.2] "reference normal bumpNormal" ["pinNoise1:resultN"]
+TransformBegin 
+Rotate 90 0 1 0
+Rotate 10 0 0 1
+Scale 0.5 0.5 0.5
+Translate 0.023 0.02 0
+Cylinder 0.07 -0.1 0.1 90 
+Cylinder 0.038 -0.1 0.1 90 
+Translate -0.03 0 0
+Patch "bilinear" "P" [0.1 0 -0.1 0.1 -0.18 -0.09 0.1 0 0.1 0.1 -0.18 0.09]
+Patch "bilinear" "P" [0.1 0 -0.1 0.07 0 -0.1 0.1 -0.18 -0.09 0.07 -0.18 -0.09]
+Patch "bilinear" "P" [0.1 0 0.1 0.07 0 0.1 0.1 -0.18 0.09 0.07 -0.18 0.09]
+Patch "bilinear" "P" [0.07 0 -0.1 0.07 -0.18 -0.09 0.07 0 0.1 0.07 -0.18 0.09]
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Cylinder 0.09 -0.015 0.015 360 
+TransformEnd 
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Disk 0.01 0.09 360 
+Translate 0 0 -0.025
+Disk 0.01 0.09 360 
+TransformEnd 
+Scale 0.8 2 0.3
+Translate 0.02 -0.06 0
+Rotate -20 0 0 1
+Patch "bilinear" "P" [0.1 0 -0.1 0.1 -0.18 -0.09 0.1 0 0.1 0.1 -0.18 0.09]
+Patch "bilinear" "P" [0.1 0 -0.1 0.07 0 -0.1 0.1 -0.18 -0.09 0.07 -0.18 -0.09]
+Patch "bilinear" "P" [0.1 0 0.1 0.07 0 0.1 0.1 -0.18 0.09 0.07 -0.18 0.09]
+Patch "bilinear" "P" [0.07 0 -0.1 0.07 -0.18 -0.09 0.07 0 0.1 0.07 -0.18 0.09]
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Cylinder 0.09 -0.015 0.015 360 
+TransformEnd 
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Disk 0.01 0.09 360 
+Translate 0 0 -0.025
+Disk 0.01 0.09 360 
+TransformEnd 
+TransformEnd 
+AttributeEnd 
+TransformEnd 
+Translate 0.165 0 0
+TransformBegin 
+Scale 0.8 1 0.8
+Translate -0.55 -0.04 -0.166
+AttributeBegin 
+Pattern "PxrBump" "pinNoise1" "int invertT" [0] "string filename" ["pinNoise1.tx"] "float scale" [0.0235704]
+Bxdf "PxrDisney" "forThePins" "color baseColor" [0.6 0.6 0.5] "float metallic" [1] "float roughness" [0.2] "reference normal bumpNormal" ["pinNoise1:resultN"]
+TransformBegin 
+Rotate 90 0 1 0
+Rotate 10 0 0 1
+Scale 0.5 0.5 0.5
+Translate 0.023 0.02 0
+Cylinder 0.07 -0.1 0.1 90 
+Cylinder 0.038 -0.1 0.1 90 
+Translate -0.03 0 0
+Patch "bilinear" "P" [0.1 0 -0.1 0.1 -0.18 -0.09 0.1 0 0.1 0.1 -0.18 0.09]
+Patch "bilinear" "P" [0.1 0 -0.1 0.07 0 -0.1 0.1 -0.18 -0.09 0.07 -0.18 -0.09]
+Patch "bilinear" "P" [0.1 0 0.1 0.07 0 0.1 0.1 -0.18 0.09 0.07 -0.18 0.09]
+Patch "bilinear" "P" [0.07 0 -0.1 0.07 -0.18 -0.09 0.07 0 0.1 0.07 -0.18 0.09]
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Cylinder 0.09 -0.015 0.015 360 
+TransformEnd 
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Disk 0.01 0.09 360 
+Translate 0 0 -0.025
+Disk 0.01 0.09 360 
+TransformEnd 
+Scale 0.8 2 0.3
+Translate 0.02 -0.06 0
+Rotate -20 0 0 1
+Patch "bilinear" "P" [0.1 0 -0.1 0.1 -0.18 -0.09 0.1 0 0.1 0.1 -0.18 0.09]
+Patch "bilinear" "P" [0.1 0 -0.1 0.07 0 -0.1 0.1 -0.18 -0.09 0.07 -0.18 -0.09]
+Patch "bilinear" "P" [0.1 0 0.1 0.07 0 0.1 0.1 -0.18 0.09 0.07 -0.18 0.09]
+Patch "bilinear" "P" [0.07 0 -0.1 0.07 -0.18 -0.09 0.07 0 0.1 0.07 -0.18 0.09]
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Cylinder 0.09 -0.015 0.015 360 
+TransformEnd 
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Disk 0.01 0.09 360 
+Translate 0 0 -0.025
+Disk 0.01 0.09 360 
+TransformEnd 
+TransformEnd 
+AttributeEnd 
+TransformEnd 
+Translate 0.165 0 0
+TransformBegin 
+Scale 0.8 1 0.8
+Translate -0.55 -0.04 -0.166
+AttributeBegin 
+Pattern "PxrBump" "pinNoise1" "int invertT" [1] "string filename" ["pinNoise1.tx"] "float scale" [0.0921768]
+Bxdf "PxrDisney" "forThePins" "color baseColor" [0.6 0.6 0.5] "float metallic" [1] "float roughness" [0.2] "reference normal bumpNormal" ["pinNoise1:resultN"]
+TransformBegin 
+Rotate 90 0 1 0
+Rotate 10 0 0 1
+Scale 0.5 0.5 0.5
+Translate 0.023 0.02 0
+Cylinder 0.07 -0.1 0.1 90 
+Cylinder 0.038 -0.1 0.1 90 
+Translate -0.03 0 0
+Patch "bilinear" "P" [0.1 0 -0.1 0.1 -0.18 -0.09 0.1 0 0.1 0.1 -0.18 0.09]
+Patch "bilinear" "P" [0.1 0 -0.1 0.07 0 -0.1 0.1 -0.18 -0.09 0.07 -0.18 -0.09]
+Patch "bilinear" "P" [0.1 0 0.1 0.07 0 0.1 0.1 -0.18 0.09 0.07 -0.18 0.09]
+Patch "bilinear" "P" [0.07 0 -0.1 0.07 -0.18 -0.09 0.07 0 0.1 0.07 -0.18 0.09]
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Cylinder 0.09 -0.015 0.015 360 
+TransformEnd 
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Disk 0.01 0.09 360 
+Translate 0 0 -0.025
+Disk 0.01 0.09 360 
+TransformEnd 
+Scale 0.8 2 0.3
+Translate 0.02 -0.06 0
+Rotate -20 0 0 1
+Patch "bilinear" "P" [0.1 0 -0.1 0.1 -0.18 -0.09 0.1 0 0.1 0.1 -0.18 0.09]
+Patch "bilinear" "P" [0.1 0 -0.1 0.07 0 -0.1 0.1 -0.18 -0.09 0.07 -0.18 -0.09]
+Patch "bilinear" "P" [0.1 0 0.1 0.07 0 0.1 0.1 -0.18 0.09 0.07 -0.18 0.09]
+Patch "bilinear" "P" [0.07 0 -0.1 0.07 -0.18 -0.09 0.07 0 0.1 0.07 -0.18 0.09]
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Cylinder 0.09 -0.015 0.015 360 
+TransformEnd 
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Disk 0.01 0.09 360 
+Translate 0 0 -0.025
+Disk 0.01 0.09 360 
+TransformEnd 
+TransformEnd 
+AttributeEnd 
+TransformEnd 
+Translate 0.165 0 0
+TransformBegin 
+Scale 0.8 1 0.8
+Translate -0.55 -0.04 -0.166
+AttributeBegin 
+Pattern "PxrBump" "pinNoise1" "int invertT" [0] "string filename" ["pinNoise1.tx"] "float scale" [0.0676719]
+Bxdf "PxrDisney" "forThePins" "color baseColor" [0.6 0.6 0.5] "float metallic" [1] "float roughness" [0.2] "reference normal bumpNormal" ["pinNoise1:resultN"]
+TransformBegin 
+Rotate 90 0 1 0
+Rotate 10 0 0 1
+Scale 0.5 0.5 0.5
+Translate 0.023 0.02 0
+Cylinder 0.07 -0.1 0.1 90 
+Cylinder 0.038 -0.1 0.1 90 
+Translate -0.03 0 0
+Patch "bilinear" "P" [0.1 0 -0.1 0.1 -0.18 -0.09 0.1 0 0.1 0.1 -0.18 0.09]
+Patch "bilinear" "P" [0.1 0 -0.1 0.07 0 -0.1 0.1 -0.18 -0.09 0.07 -0.18 -0.09]
+Patch "bilinear" "P" [0.1 0 0.1 0.07 0 0.1 0.1 -0.18 0.09 0.07 -0.18 0.09]
+Patch "bilinear" "P" [0.07 0 -0.1 0.07 -0.18 -0.09 0.07 0 0.1 0.07 -0.18 0.09]
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Cylinder 0.09 -0.015 0.015 360 
+TransformEnd 
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Disk 0.01 0.09 360 
+Translate 0 0 -0.025
+Disk 0.01 0.09 360 
+TransformEnd 
+Scale 0.8 2 0.3
+Translate 0.02 -0.06 0
+Rotate -20 0 0 1
+Patch "bilinear" "P" [0.1 0 -0.1 0.1 -0.18 -0.09 0.1 0 0.1 0.1 -0.18 0.09]
+Patch "bilinear" "P" [0.1 0 -0.1 0.07 0 -0.1 0.1 -0.18 -0.09 0.07 -0.18 -0.09]
+Patch "bilinear" "P" [0.1 0 0.1 0.07 0 0.1 0.1 -0.18 0.09 0.07 -0.18 0.09]
+Patch "bilinear" "P" [0.07 0 -0.1 0.07 -0.18 -0.09 0.07 0 0.1 0.07 -0.18 0.09]
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Cylinder 0.09 -0.015 0.015 360 
+TransformEnd 
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Disk 0.01 0.09 360 
+Translate 0 0 -0.025
+Disk 0.01 0.09 360 
+TransformEnd 
+TransformEnd 
+AttributeEnd 
+TransformEnd 
+Translate 0.165 0 0
+TransformBegin 
+Scale 0.8 1 0.8
+Translate -0.55 -0.04 -0.166
+AttributeBegin 
+Pattern "PxrBump" "pinNoise1" "int invertT" [1] "string filename" ["pinNoise1.tx"] "float scale" [0.0552512]
+Bxdf "PxrDisney" "forThePins" "color baseColor" [0.6 0.6 0.5] "float metallic" [1] "float roughness" [0.2] "reference normal bumpNormal" ["pinNoise1:resultN"]
+TransformBegin 
+Rotate 90 0 1 0
+Rotate 10 0 0 1
+Scale 0.5 0.5 0.5
+Translate 0.023 0.02 0
+Cylinder 0.07 -0.1 0.1 90 
+Cylinder 0.038 -0.1 0.1 90 
+Translate -0.03 0 0
+Patch "bilinear" "P" [0.1 0 -0.1 0.1 -0.18 -0.09 0.1 0 0.1 0.1 -0.18 0.09]
+Patch "bilinear" "P" [0.1 0 -0.1 0.07 0 -0.1 0.1 -0.18 -0.09 0.07 -0.18 -0.09]
+Patch "bilinear" "P" [0.1 0 0.1 0.07 0 0.1 0.1 -0.18 0.09 0.07 -0.18 0.09]
+Patch "bilinear" "P" [0.07 0 -0.1 0.07 -0.18 -0.09 0.07 0 0.1 0.07 -0.18 0.09]
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Cylinder 0.09 -0.015 0.015 360 
+TransformEnd 
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Disk 0.01 0.09 360 
+Translate 0 0 -0.025
+Disk 0.01 0.09 360 
+TransformEnd 
+Scale 0.8 2 0.3
+Translate 0.02 -0.06 0
+Rotate -20 0 0 1
+Patch "bilinear" "P" [0.1 0 -0.1 0.1 -0.18 -0.09 0.1 0 0.1 0.1 -0.18 0.09]
+Patch "bilinear" "P" [0.1 0 -0.1 0.07 0 -0.1 0.1 -0.18 -0.09 0.07 -0.18 -0.09]
+Patch "bilinear" "P" [0.1 0 0.1 0.07 0 0.1 0.1 -0.18 0.09 0.07 -0.18 0.09]
+Patch "bilinear" "P" [0.07 0 -0.1 0.07 -0.18 -0.09 0.07 0 0.1 0.07 -0.18 0.09]
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Cylinder 0.09 -0.015 0.015 360 
+TransformEnd 
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Disk 0.01 0.09 360 
+Translate 0 0 -0.025
+Disk 0.01 0.09 360 
+TransformEnd 
+TransformEnd 
+AttributeEnd 
+TransformEnd 
+Translate 0.165 0 0
+TransformBegin 
+Scale 0.8 1 0.8
+Translate -0.55 -0.04 -0.166
+AttributeBegin 
+Pattern "PxrBump" "pinNoise1" "int invertT" [0] "string filename" ["pinNoise1.tx"] "float scale" [0.0644175]
+Bxdf "PxrDisney" "forThePins" "color baseColor" [0.6 0.6 0.5] "float metallic" [1] "float roughness" [0.2] "reference normal bumpNormal" ["pinNoise1:resultN"]
+TransformBegin 
+Rotate 90 0 1 0
+Rotate 10 0 0 1
+Scale 0.5 0.5 0.5
+Translate 0.023 0.02 0
+Cylinder 0.07 -0.1 0.1 90 
+Cylinder 0.038 -0.1 0.1 90 
+Translate -0.03 0 0
+Patch "bilinear" "P" [0.1 0 -0.1 0.1 -0.18 -0.09 0.1 0 0.1 0.1 -0.18 0.09]
+Patch "bilinear" "P" [0.1 0 -0.1 0.07 0 -0.1 0.1 -0.18 -0.09 0.07 -0.18 -0.09]
+Patch "bilinear" "P" [0.1 0 0.1 0.07 0 0.1 0.1 -0.18 0.09 0.07 -0.18 0.09]
+Patch "bilinear" "P" [0.07 0 -0.1 0.07 -0.18 -0.09 0.07 0 0.1 0.07 -0.18 0.09]
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Cylinder 0.09 -0.015 0.015 360 
+TransformEnd 
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Disk 0.01 0.09 360 
+Translate 0 0 -0.025
+Disk 0.01 0.09 360 
+TransformEnd 
+Scale 0.8 2 0.3
+Translate 0.02 -0.06 0
+Rotate -20 0 0 1
+Patch "bilinear" "P" [0.1 0 -0.1 0.1 -0.18 -0.09 0.1 0 0.1 0.1 -0.18 0.09]
+Patch "bilinear" "P" [0.1 0 -0.1 0.07 0 -0.1 0.1 -0.18 -0.09 0.07 -0.18 -0.09]
+Patch "bilinear" "P" [0.1 0 0.1 0.07 0 0.1 0.1 -0.18 0.09 0.07 -0.18 0.09]
+Patch "bilinear" "P" [0.07 0 -0.1 0.07 -0.18 -0.09 0.07 0 0.1 0.07 -0.18 0.09]
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Cylinder 0.09 -0.015 0.015 360 
+TransformEnd 
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Disk 0.01 0.09 360 
+Translate 0 0 -0.025
+Disk 0.01 0.09 360 
+TransformEnd 
+TransformEnd 
+AttributeEnd 
+TransformEnd 
+Translate 0.165 0 0
+TransformBegin 
+Scale 0.8 1 0.8
+Translate -0.55 -0.04 -0.166
+AttributeBegin 
+Pattern "PxrBump" "pinNoise1" "int invertT" [1] "string filename" ["pinNoise1.tx"] "float scale" [0.0996256]
+Bxdf "PxrDisney" "forThePins" "color baseColor" [0.6 0.6 0.5] "float metallic" [1] "float roughness" [0.2] "reference normal bumpNormal" ["pinNoise1:resultN"]
+TransformBegin 
+Rotate 90 0 1 0
+Rotate 10 0 0 1
+Scale 0.5 0.5 0.5
+Translate 0.023 0.02 0
+Cylinder 0.07 -0.1 0.1 90 
+Cylinder 0.038 -0.1 0.1 90 
+Translate -0.03 0 0
+Patch "bilinear" "P" [0.1 0 -0.1 0.1 -0.18 -0.09 0.1 0 0.1 0.1 -0.18 0.09]
+Patch "bilinear" "P" [0.1 0 -0.1 0.07 0 -0.1 0.1 -0.18 -0.09 0.07 -0.18 -0.09]
+Patch "bilinear" "P" [0.1 0 0.1 0.07 0 0.1 0.1 -0.18 0.09 0.07 -0.18 0.09]
+Patch "bilinear" "P" [0.07 0 -0.1 0.07 -0.18 -0.09 0.07 0 0.1 0.07 -0.18 0.09]
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Cylinder 0.09 -0.015 0.015 360 
+TransformEnd 
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Disk 0.01 0.09 360 
+Translate 0 0 -0.025
+Disk 0.01 0.09 360 
+TransformEnd 
+Scale 0.8 2 0.3
+Translate 0.02 -0.06 0
+Rotate -20 0 0 1
+Patch "bilinear" "P" [0.1 0 -0.1 0.1 -0.18 -0.09 0.1 0 0.1 0.1 -0.18 0.09]
+Patch "bilinear" "P" [0.1 0 -0.1 0.07 0 -0.1 0.1 -0.18 -0.09 0.07 -0.18 -0.09]
+Patch "bilinear" "P" [0.1 0 0.1 0.07 0 0.1 0.1 -0.18 0.09 0.07 -0.18 0.09]
+Patch "bilinear" "P" [0.07 0 -0.1 0.07 -0.18 -0.09 0.07 0 0.1 0.07 -0.18 0.09]
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Cylinder 0.09 -0.015 0.015 360 
+TransformEnd 
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Disk 0.01 0.09 360 
+Translate 0 0 -0.025
+Disk 0.01 0.09 360 
+TransformEnd 
+TransformEnd 
+AttributeEnd 
+TransformEnd 
+Translate 0.165 0 0
+TransformBegin 
+Scale 0.8 1 0.8
+Translate -0.55 -0.04 -0.166
+AttributeBegin 
+Pattern "PxrBump" "pinNoise1" "int invertT" [0] "string filename" ["pinNoise1.tx"] "float scale" [0.0596903]
+Bxdf "PxrDisney" "forThePins" "color baseColor" [0.6 0.6 0.5] "float metallic" [1] "float roughness" [0.2] "reference normal bumpNormal" ["pinNoise1:resultN"]
+TransformBegin 
+Rotate 90 0 1 0
+Rotate 10 0 0 1
+Scale 0.5 0.5 0.5
+Translate 0.023 0.02 0
+Cylinder 0.07 -0.1 0.1 90 
+Cylinder 0.038 -0.1 0.1 90 
+Translate -0.03 0 0
+Patch "bilinear" "P" [0.1 0 -0.1 0.1 -0.18 -0.09 0.1 0 0.1 0.1 -0.18 0.09]
+Patch "bilinear" "P" [0.1 0 -0.1 0.07 0 -0.1 0.1 -0.18 -0.09 0.07 -0.18 -0.09]
+Patch "bilinear" "P" [0.1 0 0.1 0.07 0 0.1 0.1 -0.18 0.09 0.07 -0.18 0.09]
+Patch "bilinear" "P" [0.07 0 -0.1 0.07 -0.18 -0.09 0.07 0 0.1 0.07 -0.18 0.09]
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Cylinder 0.09 -0.015 0.015 360 
+TransformEnd 
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Disk 0.01 0.09 360 
+Translate 0 0 -0.025
+Disk 0.01 0.09 360 
+TransformEnd 
+Scale 0.8 2 0.3
+Translate 0.02 -0.06 0
+Rotate -20 0 0 1
+Patch "bilinear" "P" [0.1 0 -0.1 0.1 -0.18 -0.09 0.1 0 0.1 0.1 -0.18 0.09]
+Patch "bilinear" "P" [0.1 0 -0.1 0.07 0 -0.1 0.1 -0.18 -0.09 0.07 -0.18 -0.09]
+Patch "bilinear" "P" [0.1 0 0.1 0.07 0 0.1 0.1 -0.18 0.09 0.07 -0.18 0.09]
+Patch "bilinear" "P" [0.07 0 -0.1 0.07 -0.18 -0.09 0.07 0 0.1 0.07 -0.18 0.09]
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Cylinder 0.09 -0.015 0.015 360 
+TransformEnd 
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Disk 0.01 0.09 360 
+Translate 0 0 -0.025
+Disk 0.01 0.09 360 
+TransformEnd 
+TransformEnd 
+AttributeEnd 
+TransformEnd 
+Translate 0.165 0 0
+Rotate 180 0 1 0
+Translate 1.09 0 0.005
+TransformBegin 
+Scale 0.8 1 0.8
+Translate -0.55 -0.04 -0.165
+AttributeBegin 
+Pattern "PxrBump" "pinNoise1" "int invertT" [0] "string filename" ["pinNoise1.tx"] "float scale" [0.0971847]
+Bxdf "PxrDisney" "forThePins" "color baseColor" [0.6 0.6 0.5] "float metallic" [1] "float roughness" [0.2] "reference normal bumpNormal" ["pinNoise1:resultN"]
+TransformBegin 
+Rotate 90 0 1 0
+Rotate 10 0 0 1
+Scale 0.5 0.5 0.5
+Translate 0.023 0.02 0
+Cylinder 0.07 -0.1 0.1 90 
+Cylinder 0.038 -0.1 0.1 90 
+Translate -0.03 0 0
+Patch "bilinear" "P" [0.1 0 -0.1 0.1 -0.18 -0.09 0.1 0 0.1 0.1 -0.18 0.09]
+Patch "bilinear" "P" [0.1 0 -0.1 0.07 0 -0.1 0.1 -0.18 -0.09 0.07 -0.18 -0.09]
+Patch "bilinear" "P" [0.1 0 0.1 0.07 0 0.1 0.1 -0.18 0.09 0.07 -0.18 0.09]
+Patch "bilinear" "P" [0.07 0 -0.1 0.07 -0.18 -0.09 0.07 0 0.1 0.07 -0.18 0.09]
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Cylinder 0.09 -0.015 0.015 360 
+TransformEnd 
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Disk 0.01 0.09 360 
+Translate 0 0 -0.025
+Disk 0.01 0.09 360 
+TransformEnd 
+Scale 0.8 2 0.3
+Translate 0.02 -0.06 0
+Rotate -20 0 0 1
+Patch "bilinear" "P" [0.1 0 -0.1 0.1 -0.18 -0.09 0.1 0 0.1 0.1 -0.18 0.09]
+Patch "bilinear" "P" [0.1 0 -0.1 0.07 0 -0.1 0.1 -0.18 -0.09 0.07 -0.18 -0.09]
+Patch "bilinear" "P" [0.1 0 0.1 0.07 0 0.1 0.1 -0.18 0.09 0.07 -0.18 0.09]
+Patch "bilinear" "P" [0.07 0 -0.1 0.07 -0.18 -0.09 0.07 0 0.1 0.07 -0.18 0.09]
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Cylinder 0.09 -0.015 0.015 360 
+TransformEnd 
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Disk 0.01 0.09 360 
+Translate 0 0 -0.025
+Disk 0.01 0.09 360 
+TransformEnd 
+TransformEnd 
+AttributeEnd 
+TransformEnd 
+Translate 0.16 0 0
+TransformBegin 
+Scale 0.8 1 0.8
+Translate -0.55 -0.04 -0.165
+AttributeBegin 
+Pattern "PxrBump" "pinNoise1" "int invertT" [1] "string filename" ["pinNoise1.tx"] "float scale" [0.0886818]
+Bxdf "PxrDisney" "forThePins" "color baseColor" [0.6 0.6 0.5] "float metallic" [1] "float roughness" [0.2] "reference normal bumpNormal" ["pinNoise1:resultN"]
+TransformBegin 
+Rotate 90 0 1 0
+Rotate 10 0 0 1
+Scale 0.5 0.5 0.5
+Translate 0.023 0.02 0
+Cylinder 0.07 -0.1 0.1 90 
+Cylinder 0.038 -0.1 0.1 90 
+Translate -0.03 0 0
+Patch "bilinear" "P" [0.1 0 -0.1 0.1 -0.18 -0.09 0.1 0 0.1 0.1 -0.18 0.09]
+Patch "bilinear" "P" [0.1 0 -0.1 0.07 0 -0.1 0.1 -0.18 -0.09 0.07 -0.18 -0.09]
+Patch "bilinear" "P" [0.1 0 0.1 0.07 0 0.1 0.1 -0.18 0.09 0.07 -0.18 0.09]
+Patch "bilinear" "P" [0.07 0 -0.1 0.07 -0.18 -0.09 0.07 0 0.1 0.07 -0.18 0.09]
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Cylinder 0.09 -0.015 0.015 360 
+TransformEnd 
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Disk 0.01 0.09 360 
+Translate 0 0 -0.025
+Disk 0.01 0.09 360 
+TransformEnd 
+Scale 0.8 2 0.3
+Translate 0.02 -0.06 0
+Rotate -20 0 0 1
+Patch "bilinear" "P" [0.1 0 -0.1 0.1 -0.18 -0.09 0.1 0 0.1 0.1 -0.18 0.09]
+Patch "bilinear" "P" [0.1 0 -0.1 0.07 0 -0.1 0.1 -0.18 -0.09 0.07 -0.18 -0.09]
+Patch "bilinear" "P" [0.1 0 0.1 0.07 0 0.1 0.1 -0.18 0.09 0.07 -0.18 0.09]
+Patch "bilinear" "P" [0.07 0 -0.1 0.07 -0.18 -0.09 0.07 0 0.1 0.07 -0.18 0.09]
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Cylinder 0.09 -0.015 0.015 360 
+TransformEnd 
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Disk 0.01 0.09 360 
+Translate 0 0 -0.025
+Disk 0.01 0.09 360 
+TransformEnd 
+TransformEnd 
+AttributeEnd 
+TransformEnd 
+Translate 0.16 0 0
+TransformBegin 
+Scale 0.8 1 0.8
+Translate -0.55 -0.04 -0.165
+AttributeBegin 
+Pattern "PxrBump" "pinNoise1" "int invertT" [0] "string filename" ["pinNoise1.tx"] "float scale" [0.091562]
+Bxdf "PxrDisney" "forThePins" "color baseColor" [0.6 0.6 0.5] "float metallic" [1] "float roughness" [0.2] "reference normal bumpNormal" ["pinNoise1:resultN"]
+TransformBegin 
+Rotate 90 0 1 0
+Rotate 10 0 0 1
+Scale 0.5 0.5 0.5
+Translate 0.023 0.02 0
+Cylinder 0.07 -0.1 0.1 90 
+Cylinder 0.038 -0.1 0.1 90 
+Translate -0.03 0 0
+Patch "bilinear" "P" [0.1 0 -0.1 0.1 -0.18 -0.09 0.1 0 0.1 0.1 -0.18 0.09]
+Patch "bilinear" "P" [0.1 0 -0.1 0.07 0 -0.1 0.1 -0.18 -0.09 0.07 -0.18 -0.09]
+Patch "bilinear" "P" [0.1 0 0.1 0.07 0 0.1 0.1 -0.18 0.09 0.07 -0.18 0.09]
+Patch "bilinear" "P" [0.07 0 -0.1 0.07 -0.18 -0.09 0.07 0 0.1 0.07 -0.18 0.09]
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Cylinder 0.09 -0.015 0.015 360 
+TransformEnd 
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Disk 0.01 0.09 360 
+Translate 0 0 -0.025
+Disk 0.01 0.09 360 
+TransformEnd 
+Scale 0.8 2 0.3
+Translate 0.02 -0.06 0
+Rotate -20 0 0 1
+Patch "bilinear" "P" [0.1 0 -0.1 0.1 -0.18 -0.09 0.1 0 0.1 0.1 -0.18 0.09]
+Patch "bilinear" "P" [0.1 0 -0.1 0.07 0 -0.1 0.1 -0.18 -0.09 0.07 -0.18 -0.09]
+Patch "bilinear" "P" [0.1 0 0.1 0.07 0 0.1 0.1 -0.18 0.09 0.07 -0.18 0.09]
+Patch "bilinear" "P" [0.07 0 -0.1 0.07 -0.18 -0.09 0.07 0 0.1 0.07 -0.18 0.09]
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Cylinder 0.09 -0.015 0.015 360 
+TransformEnd 
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Disk 0.01 0.09 360 
+Translate 0 0 -0.025
+Disk 0.01 0.09 360 
+TransformEnd 
+TransformEnd 
+AttributeEnd 
+TransformEnd 
+Translate 0.16 0 0
+TransformBegin 
+Scale 0.8 1 0.8
+Translate -0.55 -0.04 -0.165
+AttributeBegin 
+Pattern "PxrBump" "pinNoise1" "int invertT" [1] "string filename" ["pinNoise1.tx"] "float scale" [0.0771521]
+Bxdf "PxrDisney" "forThePins" "color baseColor" [0.6 0.6 0.5] "float metallic" [1] "float roughness" [0.2] "reference normal bumpNormal" ["pinNoise1:resultN"]
+TransformBegin 
+Rotate 90 0 1 0
+Rotate 10 0 0 1
+Scale 0.5 0.5 0.5
+Translate 0.023 0.02 0
+Cylinder 0.07 -0.1 0.1 90 
+Cylinder 0.038 -0.1 0.1 90 
+Translate -0.03 0 0
+Patch "bilinear" "P" [0.1 0 -0.1 0.1 -0.18 -0.09 0.1 0 0.1 0.1 -0.18 0.09]
+Patch "bilinear" "P" [0.1 0 -0.1 0.07 0 -0.1 0.1 -0.18 -0.09 0.07 -0.18 -0.09]
+Patch "bilinear" "P" [0.1 0 0.1 0.07 0 0.1 0.1 -0.18 0.09 0.07 -0.18 0.09]
+Patch "bilinear" "P" [0.07 0 -0.1 0.07 -0.18 -0.09 0.07 0 0.1 0.07 -0.18 0.09]
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Cylinder 0.09 -0.015 0.015 360 
+TransformEnd 
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Disk 0.01 0.09 360 
+Translate 0 0 -0.025
+Disk 0.01 0.09 360 
+TransformEnd 
+Scale 0.8 2 0.3
+Translate 0.02 -0.06 0
+Rotate -20 0 0 1
+Patch "bilinear" "P" [0.1 0 -0.1 0.1 -0.18 -0.09 0.1 0 0.1 0.1 -0.18 0.09]
+Patch "bilinear" "P" [0.1 0 -0.1 0.07 0 -0.1 0.1 -0.18 -0.09 0.07 -0.18 -0.09]
+Patch "bilinear" "P" [0.1 0 0.1 0.07 0 0.1 0.1 -0.18 0.09 0.07 -0.18 0.09]
+Patch "bilinear" "P" [0.07 0 -0.1 0.07 -0.18 -0.09 0.07 0 0.1 0.07 -0.18 0.09]
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Cylinder 0.09 -0.015 0.015 360 
+TransformEnd 
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Disk 0.01 0.09 360 
+Translate 0 0 -0.025
+Disk 0.01 0.09 360 
+TransformEnd 
+TransformEnd 
+AttributeEnd 
+TransformEnd 
+Translate 0.16 0 0
+TransformBegin 
+Scale 0.8 1 0.8
+Translate -0.55 -0.04 -0.165
+AttributeBegin 
+Pattern "PxrBump" "pinNoise1" "int invertT" [0] "string filename" ["pinNoise1.tx"] "float scale" [0.0431561]
+Bxdf "PxrDisney" "forThePins" "color baseColor" [0.6 0.6 0.5] "float metallic" [1] "float roughness" [0.2] "reference normal bumpNormal" ["pinNoise1:resultN"]
+TransformBegin 
+Rotate 90 0 1 0
+Rotate 10 0 0 1
+Scale 0.5 0.5 0.5
+Translate 0.023 0.02 0
+Cylinder 0.07 -0.1 0.1 90 
+Cylinder 0.038 -0.1 0.1 90 
+Translate -0.03 0 0
+Patch "bilinear" "P" [0.1 0 -0.1 0.1 -0.18 -0.09 0.1 0 0.1 0.1 -0.18 0.09]
+Patch "bilinear" "P" [0.1 0 -0.1 0.07 0 -0.1 0.1 -0.18 -0.09 0.07 -0.18 -0.09]
+Patch "bilinear" "P" [0.1 0 0.1 0.07 0 0.1 0.1 -0.18 0.09 0.07 -0.18 0.09]
+Patch "bilinear" "P" [0.07 0 -0.1 0.07 -0.18 -0.09 0.07 0 0.1 0.07 -0.18 0.09]
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Cylinder 0.09 -0.015 0.015 360 
+TransformEnd 
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Disk 0.01 0.09 360 
+Translate 0 0 -0.025
+Disk 0.01 0.09 360 
+TransformEnd 
+Scale 0.8 2 0.3
+Translate 0.02 -0.06 0
+Rotate -20 0 0 1
+Patch "bilinear" "P" [0.1 0 -0.1 0.1 -0.18 -0.09 0.1 0 0.1 0.1 -0.18 0.09]
+Patch "bilinear" "P" [0.1 0 -0.1 0.07 0 -0.1 0.1 -0.18 -0.09 0.07 -0.18 -0.09]
+Patch "bilinear" "P" [0.1 0 0.1 0.07 0 0.1 0.1 -0.18 0.09 0.07 -0.18 0.09]
+Patch "bilinear" "P" [0.07 0 -0.1 0.07 -0.18 -0.09 0.07 0 0.1 0.07 -0.18 0.09]
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Cylinder 0.09 -0.015 0.015 360 
+TransformEnd 
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Disk 0.01 0.09 360 
+Translate 0 0 -0.025
+Disk 0.01 0.09 360 
+TransformEnd 
+TransformEnd 
+AttributeEnd 
+TransformEnd 
+Translate 0.16 0 0
+TransformBegin 
+Scale 0.8 1 0.8
+Translate -0.55 -0.04 -0.165
+AttributeBegin 
+Pattern "PxrBump" "pinNoise1" "int invertT" [1] "string filename" ["pinNoise1.tx"] "float scale" [0.0323354]
+Bxdf "PxrDisney" "forThePins" "color baseColor" [0.6 0.6 0.5] "float metallic" [1] "float roughness" [0.2] "reference normal bumpNormal" ["pinNoise1:resultN"]
+TransformBegin 
+Rotate 90 0 1 0
+Rotate 10 0 0 1
+Scale 0.5 0.5 0.5
+Translate 0.023 0.02 0
+Cylinder 0.07 -0.1 0.1 90 
+Cylinder 0.038 -0.1 0.1 90 
+Translate -0.03 0 0
+Patch "bilinear" "P" [0.1 0 -0.1 0.1 -0.18 -0.09 0.1 0 0.1 0.1 -0.18 0.09]
+Patch "bilinear" "P" [0.1 0 -0.1 0.07 0 -0.1 0.1 -0.18 -0.09 0.07 -0.18 -0.09]
+Patch "bilinear" "P" [0.1 0 0.1 0.07 0 0.1 0.1 -0.18 0.09 0.07 -0.18 0.09]
+Patch "bilinear" "P" [0.07 0 -0.1 0.07 -0.18 -0.09 0.07 0 0.1 0.07 -0.18 0.09]
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Cylinder 0.09 -0.015 0.015 360 
+TransformEnd 
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Disk 0.01 0.09 360 
+Translate 0 0 -0.025
+Disk 0.01 0.09 360 
+TransformEnd 
+Scale 0.8 2 0.3
+Translate 0.02 -0.06 0
+Rotate -20 0 0 1
+Patch "bilinear" "P" [0.1 0 -0.1 0.1 -0.18 -0.09 0.1 0 0.1 0.1 -0.18 0.09]
+Patch "bilinear" "P" [0.1 0 -0.1 0.07 0 -0.1 0.1 -0.18 -0.09 0.07 -0.18 -0.09]
+Patch "bilinear" "P" [0.1 0 0.1 0.07 0 0.1 0.1 -0.18 0.09 0.07 -0.18 0.09]
+Patch "bilinear" "P" [0.07 0 -0.1 0.07 -0.18 -0.09 0.07 0 0.1 0.07 -0.18 0.09]
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Cylinder 0.09 -0.015 0.015 360 
+TransformEnd 
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Disk 0.01 0.09 360 
+Translate 0 0 -0.025
+Disk 0.01 0.09 360 
+TransformEnd 
+TransformEnd 
+AttributeEnd 
+TransformEnd 
+Translate 0.16 0 0
+TransformBegin 
+Scale 0.8 1 0.8
+Translate -0.55 -0.04 -0.165
+AttributeBegin 
+Pattern "PxrBump" "pinNoise1" "int invertT" [0] "string filename" ["pinNoise1.tx"] "float scale" [0.0760991]
+Bxdf "PxrDisney" "forThePins" "color baseColor" [0.6 0.6 0.5] "float metallic" [1] "float roughness" [0.2] "reference normal bumpNormal" ["pinNoise1:resultN"]
+TransformBegin 
+Rotate 90 0 1 0
+Rotate 10 0 0 1
+Scale 0.5 0.5 0.5
+Translate 0.023 0.02 0
+Cylinder 0.07 -0.1 0.1 90 
+Cylinder 0.038 -0.1 0.1 90 
+Translate -0.03 0 0
+Patch "bilinear" "P" [0.1 0 -0.1 0.1 -0.18 -0.09 0.1 0 0.1 0.1 -0.18 0.09]
+Patch "bilinear" "P" [0.1 0 -0.1 0.07 0 -0.1 0.1 -0.18 -0.09 0.07 -0.18 -0.09]
+Patch "bilinear" "P" [0.1 0 0.1 0.07 0 0.1 0.1 -0.18 0.09 0.07 -0.18 0.09]
+Patch "bilinear" "P" [0.07 0 -0.1 0.07 -0.18 -0.09 0.07 0 0.1 0.07 -0.18 0.09]
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Cylinder 0.09 -0.015 0.015 360 
+TransformEnd 
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Disk 0.01 0.09 360 
+Translate 0 0 -0.025
+Disk 0.01 0.09 360 
+TransformEnd 
+Scale 0.8 2 0.3
+Translate 0.02 -0.06 0
+Rotate -20 0 0 1
+Patch "bilinear" "P" [0.1 0 -0.1 0.1 -0.18 -0.09 0.1 0 0.1 0.1 -0.18 0.09]
+Patch "bilinear" "P" [0.1 0 -0.1 0.07 0 -0.1 0.1 -0.18 -0.09 0.07 -0.18 -0.09]
+Patch "bilinear" "P" [0.1 0 0.1 0.07 0 0.1 0.1 -0.18 0.09 0.07 -0.18 0.09]
+Patch "bilinear" "P" [0.07 0 -0.1 0.07 -0.18 -0.09 0.07 0 0.1 0.07 -0.18 0.09]
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Cylinder 0.09 -0.015 0.015 360 
+TransformEnd 
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Disk 0.01 0.09 360 
+Translate 0 0 -0.025
+Disk 0.01 0.09 360 
+TransformEnd 
+TransformEnd 
+AttributeEnd 
+TransformEnd 
+Translate 0.16 0 0
+TransformBegin 
+Scale 0.8 1 0.8
+Translate -0.55 -0.04 -0.165
+AttributeBegin 
+Pattern "PxrBump" "pinNoise1" "int invertT" [1] "string filename" ["pinNoise1.tx"] "float scale" [0.011834]
+Bxdf "PxrDisney" "forThePins" "color baseColor" [0.6 0.6 0.5] "float metallic" [1] "float roughness" [0.2] "reference normal bumpNormal" ["pinNoise1:resultN"]
+TransformBegin 
+Rotate 90 0 1 0
+Rotate 10 0 0 1
+Scale 0.5 0.5 0.5
+Translate 0.023 0.02 0
+Cylinder 0.07 -0.1 0.1 90 
+Cylinder 0.038 -0.1 0.1 90 
+Translate -0.03 0 0
+Patch "bilinear" "P" [0.1 0 -0.1 0.1 -0.18 -0.09 0.1 0 0.1 0.1 -0.18 0.09]
+Patch "bilinear" "P" [0.1 0 -0.1 0.07 0 -0.1 0.1 -0.18 -0.09 0.07 -0.18 -0.09]
+Patch "bilinear" "P" [0.1 0 0.1 0.07 0 0.1 0.1 -0.18 0.09 0.07 -0.18 0.09]
+Patch "bilinear" "P" [0.07 0 -0.1 0.07 -0.18 -0.09 0.07 0 0.1 0.07 -0.18 0.09]
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Cylinder 0.09 -0.015 0.015 360 
+TransformEnd 
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Disk 0.01 0.09 360 
+Translate 0 0 -0.025
+Disk 0.01 0.09 360 
+TransformEnd 
+Scale 0.8 2 0.3
+Translate 0.02 -0.06 0
+Rotate -20 0 0 1
+Patch "bilinear" "P" [0.1 0 -0.1 0.1 -0.18 -0.09 0.1 0 0.1 0.1 -0.18 0.09]
+Patch "bilinear" "P" [0.1 0 -0.1 0.07 0 -0.1 0.1 -0.18 -0.09 0.07 -0.18 -0.09]
+Patch "bilinear" "P" [0.1 0 0.1 0.07 0 0.1 0.1 -0.18 0.09 0.07 -0.18 0.09]
+Patch "bilinear" "P" [0.07 0 -0.1 0.07 -0.18 -0.09 0.07 0 0.1 0.07 -0.18 0.09]
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Cylinder 0.09 -0.015 0.015 360 
+TransformEnd 
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Disk 0.01 0.09 360 
+Translate 0 0 -0.025
+Disk 0.01 0.09 360 
+TransformEnd 
+TransformEnd 
+AttributeEnd 
+TransformEnd 
+Translate 0.16 0 0
+TransformBegin 
+Scale 0.8 1 0.8
+Translate -0.55 -0.04 -0.165
+AttributeBegin 
+Pattern "PxrBump" "pinNoise1" "int invertT" [0] "string filename" ["pinNoise1.tx"] "float scale" [0.0977075]
+Bxdf "PxrDisney" "forThePins" "color baseColor" [0.6 0.6 0.5] "float metallic" [1] "float roughness" [0.2] "reference normal bumpNormal" ["pinNoise1:resultN"]
+TransformBegin 
+Rotate 90 0 1 0
+Rotate 10 0 0 1
+Scale 0.5 0.5 0.5
+Translate 0.023 0.02 0
+Cylinder 0.07 -0.1 0.1 90 
+Cylinder 0.038 -0.1 0.1 90 
+Translate -0.03 0 0
+Patch "bilinear" "P" [0.1 0 -0.1 0.1 -0.18 -0.09 0.1 0 0.1 0.1 -0.18 0.09]
+Patch "bilinear" "P" [0.1 0 -0.1 0.07 0 -0.1 0.1 -0.18 -0.09 0.07 -0.18 -0.09]
+Patch "bilinear" "P" [0.1 0 0.1 0.07 0 0.1 0.1 -0.18 0.09 0.07 -0.18 0.09]
+Patch "bilinear" "P" [0.07 0 -0.1 0.07 -0.18 -0.09 0.07 0 0.1 0.07 -0.18 0.09]
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Cylinder 0.09 -0.015 0.015 360 
+TransformEnd 
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Disk 0.01 0.09 360 
+Translate 0 0 -0.025
+Disk 0.01 0.09 360 
+TransformEnd 
+Scale 0.8 2 0.3
+Translate 0.02 -0.06 0
+Rotate -20 0 0 1
+Patch "bilinear" "P" [0.1 0 -0.1 0.1 -0.18 -0.09 0.1 0 0.1 0.1 -0.18 0.09]
+Patch "bilinear" "P" [0.1 0 -0.1 0.07 0 -0.1 0.1 -0.18 -0.09 0.07 -0.18 -0.09]
+Patch "bilinear" "P" [0.1 0 0.1 0.07 0 0.1 0.1 -0.18 0.09 0.07 -0.18 0.09]
+Patch "bilinear" "P" [0.07 0 -0.1 0.07 -0.18 -0.09 0.07 0 0.1 0.07 -0.18 0.09]
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Cylinder 0.09 -0.015 0.015 360 
+TransformEnd 
+TransformBegin 
+Rotate 90 0 -1 0
+Translate 0 -0.175 -0.085
+Scale 1 0.3 1
+Disk 0.01 0.09 360 
+Translate 0 0 -0.025
+Disk 0.01 0.09 360 
+TransformEnd 
+TransformEnd 
+AttributeEnd 
+TransformEnd 
+Translate 0.16 0 0
+TransformEnd 
+Bxdf "PxrDisney" "forThePins" "color baseColor" [0.6 0.6 0.5] "float metallic" [1] "float roughness" [0.2]
+TransformBegin 
+Rotate 90 0 1 0
+Translate 0.15 -0.015 -0.4955
+Scale 0.3 0.3 0.3
+Patch "bicubic" "P" [0 0.045 0 0 0.075 0 0 0.085 0 0 0.081 0
+0.033 0.042 0 0.04 0.0693 0 0.045 0.0779 0 0.055 0.082 0
+0.052 0.0322 0 0.0693 0.04 0 0.0779 0.045 0 0.0866 0.05 0
+0.052 0 0 0.063 0 0 0.076 0 0 0.09 0 0]
+TransformEnd 
+Translate 0.1155 0 0
+TransformBegin 
+Rotate 90 0 1 0
+Translate 0.15 -0.015 -0.4955
+Scale 0.3 0.3 0.3
+Patch "bicubic" "P" [0 0.045 0 0 0.075 0 0 0.085 0 0 0.081 0
+0.033 0.042 0 0.04 0.0693 0 0.045 0.0779 0 0.055 0.082 0
+0.052 0.0322 0 0.0693 0.04 0 0.0779 0.045 0 0.0866 0.05 0
+0.052 0 0 0.063 0 0 0.076 0 0 0.09 0 0]
+TransformEnd 
+Translate 0.1155 0 0
+TransformBegin 
+Rotate 90 0 1 0
+Translate 0.15 -0.015 -0.4955
+Scale 0.3 0.3 0.3
+Patch "bicubic" "P" [0 0.045 0 0 0.075 0 0 0.085 0 0 0.081 0
+0.033 0.042 0 0.04 0.0693 0 0.045 0.0779 0 0.055 0.082 0
+0.052 0.0322 0 0.0693 0.04 0 0.0779 0.045 0 0.0866 0.05 0
+0.052 0 0 0.063 0 0 0.076 0 0 0.09 0 0]
+TransformEnd 
+Translate 0.1155 0 0
+TransformBegin 
+Rotate 90 0 1 0
+Translate 0.15 -0.015 -0.4955
+Scale 0.3 0.3 0.3
+Patch "bicubic" "P" [0 0.045 0 0 0.075 0 0 0.085 0 0 0.081 0
+0.033 0.042 0 0.04 0.0693 0 0.045 0.0779 0 0.055 0.082 0
+0.052 0.0322 0 0.0693 0.04 0 0.0779 0.045 0 0.0866 0.05 0
+0.052 0 0 0.063 0 0 0.076 0 0 0.09 0 0]
+TransformEnd 
+Translate 0.1155 0 0
+TransformBegin 
+Rotate 90 0 1 0
+Translate 0.15 -0.015 -0.4955
+Scale 0.3 0.3 0.3
+Patch "bicubic" "P" [0 0.045 0 0 0.075 0 0 0.085 0 0 0.081 0
+0.033 0.042 0 0.04 0.0693 0 0.045 0.0779 0 0.055 0.082 0
+0.052 0.0322 0 0.0693 0.04 0 0.0779 0.045 0 0.0866 0.05 0
+0.052 0 0 0.063 0 0 0.076 0 0 0.09 0 0]
+TransformEnd 
+Translate 0.1155 0 0
+TransformBegin 
+Rotate 90 0 1 0
+Translate 0.15 -0.015 -0.4955
+Scale 0.3 0.3 0.3
+Patch "bicubic" "P" [0 0.045 0 0 0.075 0 0 0.085 0 0 0.081 0
+0.033 0.042 0 0.04 0.0693 0 0.045 0.0779 0 0.055 0.082 0
+0.052 0.0322 0 0.0693 0.04 0 0.0779 0.045 0 0.0866 0.05 0
+0.052 0 0 0.063 0 0 0.076 0 0 0.09 0 0]
+TransformEnd 
+Translate 0.1155 0 0
+TransformBegin 
+Rotate 90 0 1 0
+Translate 0.15 -0.015 -0.4955
+Scale 0.3 0.3 0.3
+Patch "bicubic" "P" [0 0.045 0 0 0.075 0 0 0.085 0 0 0.081 0
+0.033 0.042 0 0.04 0.0693 0 0.045 0.0779 0 0.055 0.082 0
+0.052 0.0322 0 0.0693 0.04 0 0.0779 0.045 0 0.0866 0.05 0
+0.052 0 0 0.063 0 0 0.076 0 0 0.09 0 0]
+TransformEnd 
+Translate 0.1155 0 0
+TransformBegin 
+Rotate 90 0 1 0
+Translate 0.15 -0.015 -0.4955
+Scale 0.3 0.3 0.3
+Patch "bicubic" "P" [0 0.045 0 0 0.075 0 0 0.085 0 0 0.081 0
+0.033 0.042 0 0.04 0.0693 0 0.045 0.0779 0 0.055 0.082 0
+0.052 0.0322 0 0.0693 0.04 0 0.0779 0.045 0 0.0866 0.05 0
+0.052 0 0 0.063 0 0 0.076 0 0 0.09 0 0]
+TransformEnd 
+Translate 0.1155 0 0
+TransformBegin 
+Rotate 90 0 1 0
+Translate 0.15 -0.015 -0.4955
+Scale 0.3 0.3 0.3
+Patch "bicubic" "P" [0 0.045 0 0 0.075 0 0 0.085 0 0 0.081 0
+0.033 0.042 0 0.04 0.0693 0 0.045 0.0779 0 0.055 0.082 0
+0.052 0.0322 0 0.0693 0.04 0 0.0779 0.045 0 0.0866 0.05 0
+0.052 0 0 0.063 0 0 0.076 0 0 0.09 0 0]
+TransformEnd 
+Translate 0.1155 0 0
+TransformBegin 
+Rotate 90 0 1 0
+Translate 0.15 -0.015 -1.48
+Scale 0.3 0.3 0.3
+Patch "bicubic" "P" [0 0.045 0 0 0.075 0 0 0.085 0 0 0.081 0
+0.033 0.042 0 0.04 0.0693 0 0.045 0.0779 0 0.055 0.082 0
+0.052 0.0322 0 0.0693 0.04 0 0.0779 0.045 0 0.0866 0.05 0
+0.052 0 0 0.063 0 0 0.076 0 0 0.09 0 0]
+TransformEnd 
+Translate 0.1155 0 0
+TransformBegin 
+Rotate 90 0 1 0
+Translate 0.15 -0.015 -1.48
+Scale 0.3 0.3 0.3
+Patch "bicubic" "P" [0 0.045 0 0 0.075 0 0 0.085 0 0 0.081 0
+0.033 0.042 0 0.04 0.0693 0 0.045 0.0779 0 0.055 0.082 0
+0.052 0.0322 0 0.0693 0.04 0 0.0779 0.045 0 0.0866 0.05 0
+0.052 0 0 0.063 0 0 0.076 0 0 0.09 0 0]
+TransformEnd 
+Translate 0.1155 0 0
+TransformBegin 
+Rotate 90 0 1 0
+Translate 0.15 -0.015 -1.48
+Scale 0.3 0.3 0.3
+Patch "bicubic" "P" [0 0.045 0 0 0.075 0 0 0.085 0 0 0.081 0
+0.033 0.042 0 0.04 0.0693 0 0.045 0.0779 0 0.055 0.082 0
+0.052 0.0322 0 0.0693 0.04 0 0.0779 0.045 0 0.0866 0.05 0
+0.052 0 0 0.063 0 0 0.076 0 0 0.09 0 0]
+TransformEnd 
+Translate 0.1155 0 0
+TransformBegin 
+Rotate 90 0 1 0
+Translate 0.15 -0.015 -1.48
+Scale 0.3 0.3 0.3
+Patch "bicubic" "P" [0 0.045 0 0 0.075 0 0 0.085 0 0 0.081 0
+0.033 0.042 0 0.04 0.0693 0 0.045 0.0779 0 0.055 0.082 0
+0.052 0.0322 0 0.0693 0.04 0 0.0779 0.045 0 0.0866 0.05 0
+0.052 0 0 0.063 0 0 0.076 0 0 0.09 0 0]
+TransformEnd 
+Translate 0.1155 0 0
+TransformBegin 
+Rotate 90 0 1 0
+Translate 0.15 -0.015 -1.48
+Scale 0.3 0.3 0.3
+Patch "bicubic" "P" [0 0.045 0 0 0.075 0 0 0.085 0 0 0.081 0
+0.033 0.042 0 0.04 0.0693 0 0.045 0.0779 0 0.055 0.082 0
+0.052 0.0322 0 0.0693 0.04 0 0.0779 0.045 0 0.0866 0.05 0
+0.052 0 0 0.063 0 0 0.076 0 0 0.09 0 0]
+TransformEnd 
+Translate 0.1155 0 0
+TransformBegin 
+Rotate 90 0 1 0
+Translate 0.15 -0.015 -1.48
+Scale 0.3 0.3 0.3
+Patch "bicubic" "P" [0 0.045 0 0 0.075 0 0 0.085 0 0 0.081 0
+0.033 0.042 0 0.04 0.0693 0 0.045 0.0779 0 0.055 0.082 0
+0.052 0.0322 0 0.0693 0.04 0 0.0779 0.045 0 0.0866 0.05 0
+0.052 0 0 0.063 0 0 0.076 0 0 0.09 0 0]
+TransformEnd 
+Translate 0.1155 0 0
+TransformBegin 
+Rotate 90 0 1 0
+Translate 0.15 -0.015 -1.48
+Scale 0.3 0.3 0.3
+Patch "bicubic" "P" [0 0.045 0 0 0.075 0 0 0.085 0 0 0.081 0
+0.033 0.042 0 0.04 0.0693 0 0.045 0.0779 0 0.055 0.082 0
+0.052 0.0322 0 0.0693 0.04 0 0.0779 0.045 0 0.0866 0.05 0
+0.052 0 0 0.063 0 0 0.076 0 0 0.09 0 0]
+TransformEnd 
+Translate 0.1155 0 0
+TransformBegin 
+Rotate 90 0 1 0
+Translate 0.15 -0.015 -1.48
+Scale 0.3 0.3 0.3
+Patch "bicubic" "P" [0 0.045 0 0 0.075 0 0 0.085 0 0 0.081 0
+0.033 0.042 0 0.04 0.0693 0 0.045 0.0779 0 0.055 0.082 0
+0.052 0.0322 0 0.0693 0.04 0 0.0779 0.045 0 0.0866 0.05 0
+0.052 0 0 0.063 0 0 0.076 0 0 0.09 0 0]
+TransformEnd 
+Translate 0.1155 0 0
+TransformBegin 
+Rotate 90 0 1 0
+Translate 0.15 -0.015 -1.48
+Scale 0.3 0.3 0.3
+Patch "bicubic" "P" [0 0.045 0 0 0.075 0 0 0.085 0 0 0.081 0
+0.033 0.042 0 0.04 0.0693 0 0.045 0.0779 0 0.055 0.082 0
+0.052 0.0322 0 0.0693 0.04 0 0.0779 0.045 0 0.0866 0.05 0
+0.052 0 0 0.063 0 0 0.076 0 0 0.09 0 0]
+TransformEnd 
+Translate 0.1155 0 0
+TransformBegin 
+Rotate 90 0 1 0
+Translate 0.15 -0.015 -0.4955
+Scale 0.3 0.3 0.3
+Patch "bicubic" "P" [0 0.045 0 0 0.075 0 0 0.085 0 0 0.081 0
+0.033 0.042 0 0.04 0.0693 0 0.045 0.0779 0 0.055 0.082 0
+0.052 0.0322 0 0.0693 0.04 0 0.0779 0.045 0 0.0866 0.05 0
+0.052 0 0 0.063 0 0 0.076 0 0 0.09 0 0]
+TransformEnd 
+Translate 0.1155 0 0
+TransformBegin 
+Rotate 90 0 1 0
+Translate 0.15 -0.015 -0.4955
+Scale 0.3 0.3 0.3
+Patch "bicubic" "P" [0 0.045 0 0 0.075 0 0 0.085 0 0 0.081 0
+0.033 0.042 0 0.04 0.0693 0 0.045 0.0779 0 0.055 0.082 0
+0.052 0.0322 0 0.0693 0.04 0 0.0779 0.045 0 0.0866 0.05 0
+0.052 0 0 0.063 0 0 0.076 0 0 0.09 0 0]
+TransformEnd 
+Translate 0.1155 0 0
+TransformBegin 
+Rotate 90 0 1 0
+Translate 0.15 -0.015 -0.4955
+Scale 0.3 0.3 0.3
+Patch "bicubic" "P" [0 0.045 0 0 0.075 0 0 0.085 0 0 0.081 0
+0.033 0.042 0 0.04 0.0693 0 0.045 0.0779 0 0.055 0.082 0
+0.052 0.0322 0 0.0693 0.04 0 0.0779 0.045 0 0.0866 0.05 0
+0.052 0 0 0.063 0 0 0.076 0 0 0.09 0 0]
+TransformEnd 
+Translate 0.1155 0 0
+TransformBegin 
+Rotate 90 0 1 0
+Translate 0.15 -0.015 -0.4955
+Scale 0.3 0.3 0.3
+Patch "bicubic" "P" [0 0.045 0 0 0.075 0 0 0.085 0 0 0.081 0
+0.033 0.042 0 0.04 0.0693 0 0.045 0.0779 0 0.055 0.082 0
+0.052 0.0322 0 0.0693 0.04 0 0.0779 0.045 0 0.0866 0.05 0
+0.052 0 0 0.063 0 0 0.076 0 0 0.09 0 0]
+TransformEnd 
+Translate 0.1155 0 0
+TransformBegin 
+Rotate 90 0 1 0
+Translate 0.15 -0.015 -0.4955
+Scale 0.3 0.3 0.3
+Patch "bicubic" "P" [0 0.045 0 0 0.075 0 0 0.085 0 0 0.081 0
+0.033 0.042 0 0.04 0.0693 0 0.045 0.0779 0 0.055 0.082 0
+0.052 0.0322 0 0.0693 0.04 0 0.0779 0.045 0 0.0866 0.05 0
+0.052 0 0 0.063 0 0 0.076 0 0 0.09 0 0]
+TransformEnd 
+Translate 0.1155 0 0
+TransformBegin 
+Rotate 90 0 1 0
+Translate 0.15 -0.015 -0.4955
+Scale 0.3 0.3 0.3
+Patch "bicubic" "P" [0 0.045 0 0 0.075 0 0 0.085 0 0 0.081 0
+0.033 0.042 0 0.04 0.0693 0 0.045 0.0779 0 0.055 0.082 0
+0.052 0.0322 0 0.0693 0.04 0 0.0779 0.045 0 0.0866 0.05 0
+0.052 0 0 0.063 0 0 0.076 0 0 0.09 0 0]
+TransformEnd 
+Translate 0.1155 0 0
+TransformBegin 
+Rotate 90 0 1 0
+Translate 0.15 -0.015 -0.4955
+Scale 0.3 0.3 0.3
+Patch "bicubic" "P" [0 0.045 0 0 0.075 0 0 0.085 0 0 0.081 0
+0.033 0.042 0 0.04 0.0693 0 0.045 0.0779 0 0.055 0.082 0
+0.052 0.0322 0 0.0693 0.04 0 0.0779 0.045 0 0.0866 0.05 0
+0.052 0 0 0.063 0 0 0.076 0 0 0.09 0 0]
+TransformEnd 
+Translate 0.1155 0 0
+TransformBegin 
+Rotate 90 0 1 0
+Translate 0.15 -0.015 -0.4955
+Scale 0.3 0.3 0.3
+Patch "bicubic" "P" [0 0.045 0 0 0.075 0 0 0.085 0 0 0.081 0
+0.033 0.042 0 0.04 0.0693 0 0.045 0.0779 0 0.055 0.082 0
+0.052 0.0322 0 0.0693 0.04 0 0.0779 0.045 0 0.0866 0.05 0
+0.052 0 0 0.063 0 0 0.076 0 0 0.09 0 0]
+TransformEnd 
+Translate 0.1155 0 0
+TransformBegin 
+Rotate 90 0 1 0
+Translate 0.15 -0.015 -0.4955
+Scale 0.3 0.3 0.3
+Patch "bicubic" "P" [0 0.045 0 0 0.075 0 0 0.085 0 0 0.081 0
+0.033 0.042 0 0.04 0.0693 0 0.045 0.0779 0 0.055 0.082 0
+0.052 0.0322 0 0.0693 0.04 0 0.0779 0.045 0 0.0866 0.05 0
+0.052 0 0 0.063 0 0 0.076 0 0 0.09 0 0]
+TransformEnd 
+Translate 0.1155 0 0
+TransformBegin 
+Rotate 90 0 1 0
+Translate 0.15 -0.015 -1.48
+Scale 0.3 0.3 0.3
+Patch "bicubic" "P" [0 0.045 0 0 0.075 0 0 0.085 0 0 0.081 0
+0.033 0.042 0 0.04 0.0693 0 0.045 0.0779 0 0.055 0.082 0
+0.052 0.0322 0 0.0693 0.04 0 0.0779 0.045 0 0.0866 0.05 0
+0.052 0 0 0.063 0 0 0.076 0 0 0.09 0 0]
+TransformEnd 
+Translate 0.1155 0 0
+TransformBegin 
+Rotate 90 0 1 0
+Translate 0.15 -0.015 -1.48
+Scale 0.3 0.3 0.3
+Patch "bicubic" "P" [0 0.045 0 0 0.075 0 0 0.085 0 0 0.081 0
+0.033 0.042 0 0.04 0.0693 0 0.045 0.0779 0 0.055 0.082 0
+0.052 0.0322 0 0.0693 0.04 0 0.0779 0.045 0 0.0866 0.05 0
+0.052 0 0 0.063 0 0 0.076 0 0 0.09 0 0]
+TransformEnd 
+Translate 0.1155 0 0
+TransformBegin 
+Rotate 90 0 1 0
+Translate 0.15 -0.015 -1.48
+Scale 0.3 0.3 0.3
+Patch "bicubic" "P" [0 0.045 0 0 0.075 0 0 0.085 0 0 0.081 0
+0.033 0.042 0 0.04 0.0693 0 0.045 0.0779 0 0.055 0.082 0
+0.052 0.0322 0 0.0693 0.04 0 0.0779 0.045 0 0.0866 0.05 0
+0.052 0 0 0.063 0 0 0.076 0 0 0.09 0 0]
+TransformEnd 
+Translate 0.1155 0 0
+TransformBegin 
+Rotate 90 0 1 0
+Translate 0.15 -0.015 -1.48
+Scale 0.3 0.3 0.3
+Patch "bicubic" "P" [0 0.045 0 0 0.075 0 0 0.085 0 0 0.081 0
+0.033 0.042 0 0.04 0.0693 0 0.045 0.0779 0 0.055 0.082 0
+0.052 0.0322 0 0.0693 0.04 0 0.0779 0.045 0 0.0866 0.05 0
+0.052 0 0 0.063 0 0 0.076 0 0 0.09 0 0]
+TransformEnd 
+Translate 0.1155 0 0
+TransformBegin 
+Rotate 90 0 1 0
+Translate 0.15 -0.015 -1.48
+Scale 0.3 0.3 0.3
+Patch "bicubic" "P" [0 0.045 0 0 0.075 0 0 0.085 0 0 0.081 0
+0.033 0.042 0 0.04 0.0693 0 0.045 0.0779 0 0.055 0.082 0
+0.052 0.0322 0 0.0693 0.04 0 0.0779 0.045 0 0.0866 0.05 0
+0.052 0 0 0.063 0 0 0.076 0 0 0.09 0 0]
+TransformEnd 
+Translate 0.1155 0 0
+TransformBegin 
+Rotate 90 0 1 0
+Translate 0.15 -0.015 -1.48
+Scale 0.3 0.3 0.3
+Patch "bicubic" "P" [0 0.045 0 0 0.075 0 0 0.085 0 0 0.081 0
+0.033 0.042 0 0.04 0.0693 0 0.045 0.0779 0 0.055 0.082 0
+0.052 0.0322 0 0.0693 0.04 0 0.0779 0.045 0 0.0866 0.05 0
+0.052 0 0 0.063 0 0 0.076 0 0 0.09 0 0]
+TransformEnd 
+Translate 0.1155 0 0
+TransformBegin 
+Rotate 90 0 1 0
+Translate 0.15 -0.015 -1.48
+Scale 0.3 0.3 0.3
+Patch "bicubic" "P" [0 0.045 0 0 0.075 0 0 0.085 0 0 0.081 0
+0.033 0.042 0 0.04 0.0693 0 0.045 0.0779 0 0.055 0.082 0
+0.052 0.0322 0 0.0693 0.04 0 0.0779 0.045 0 0.0866 0.05 0
+0.052 0 0 0.063 0 0 0.076 0 0 0.09 0 0]
+TransformEnd 
+Translate 0.1155 0 0
+TransformBegin 
+Rotate 90 0 1 0
+Translate 0.15 -0.015 -1.48
+Scale 0.3 0.3 0.3
+Patch "bicubic" "P" [0 0.045 0 0 0.075 0 0 0.085 0 0 0.081 0
+0.033 0.042 0 0.04 0.0693 0 0.045 0.0779 0 0.055 0.082 0
+0.052 0.0322 0 0.0693 0.04 0 0.0779 0.045 0 0.0866 0.05 0
+0.052 0 0 0.063 0 0 0.076 0 0 0.09 0 0]
+TransformEnd 
+Translate 0.1155 0 0
+TransformBegin 
+Rotate 90 0 1 0
+Translate 0.15 -0.015 -1.48
+Scale 0.3 0.3 0.3
+Patch "bicubic" "P" [0 0.045 0 0 0.075 0 0 0.085 0 0 0.081 0
+0.033 0.042 0 0.04 0.0693 0 0.045 0.0779 0 0.055 0.082 0
+0.052 0.0322 0 0.0693 0.04 0 0.0779 0.045 0 0.0866 0.05 0
+0.052 0 0 0.063 0 0 0.076 0 0 0.09 0 0]
+TransformEnd 
+Translate 0.1155 0 0
+WorldEnd 

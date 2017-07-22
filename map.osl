@@ -1,0 +1,14 @@
+shader map (output color Cout=1)
+{
+    //Cout=(color)texture("decal.tx",v,1-u);
+
+    float alpha;
+    texture ("decal.tx", v, 1-u, "firstchannel", 0, "alpha", alpha);
+
+    if(alpha>0.1)
+        Cout=color(0,0,0);
+    else
+        Cout=color(0.7,0.7,0.31);
+
+
+}
